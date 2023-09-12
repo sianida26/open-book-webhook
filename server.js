@@ -19,6 +19,10 @@ function logWithTimestamp(message) {
     fs.appendFileSync(LOG_FILE_PATH, `[${timestamp}] ${message}\n`)
 }
 
+app.get("/test", (req, res) => {
+    res.send("Server is running");
+})
+
 app.post('/webhook', (req, res) => {
     const signature = req.headers['x-hub-signature'];
     const hmac = crypto.createHmac('sha1', SECRET_KEY);
