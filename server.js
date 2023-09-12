@@ -20,7 +20,7 @@ function logWithTimestamp(message) {
 }
 
 app.get("/test", (req, res) => {
-    res.send("Server is running");
+    res.send("Server is running heeeee");
 })
 
 app.post('/webhook', (req, res) => {
@@ -33,6 +33,7 @@ app.post('/webhook', (req, res) => {
      // Log the request to the logfile
     logWithTimestamp(`Request received with payload: ${JSON.stringify(req.body)}\n`);
 
+    logWithTimestamp(signature + " karo " + digest)
     if (signature !== digest) {
         logWithTimestamp('Authentication failed');
         return res.status(403).send('Authentication failed');
@@ -48,7 +49,10 @@ app.post('/webhook', (req, res) => {
         scriptToRun = './scripts/update-bee-tasks.sh';
     } else if (action === 'update-webhook') {
         scriptToRun = './scripts/update-webhook.sh';
-    } else {
+    } else if (action === "test-webhook"){
+        scriptToRun = './scripts/test-webhook.sh';        
+    } 
+    else {
         logWithTimestamp(`Response: Invalid pull type\n`);
         return res.status(400).send('Invalid pull type');
     }
