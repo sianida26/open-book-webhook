@@ -1,4 +1,4 @@
-cd ../../opmx
+cd ../../opmx-frontend
 git fetch origin
 git reset --hard origin/main
 yarn
