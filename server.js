@@ -20,7 +20,7 @@ function logWithTimestamp(message) {
 }
 
 app.get("/test", (req, res) => {
-    res.send("Server is running heeeee");
+    res.send("Webhook server is running");
 })
 
 app.post('/webhook', (req, res) => {
@@ -33,7 +33,6 @@ app.post('/webhook', (req, res) => {
      // Log the request to the logfile
     logWithTimestamp(`Request received with payload: ${JSON.stringify(req.body)}\n`);
 
-    logWithTimestamp(signature + " karo " + digest)
     if (signature !== digest) {
         logWithTimestamp('Authentication failed');
         return res.status(403).send('Authentication failed');
