@@ -33,10 +33,10 @@ app.post('/webhook', (req, res) => {
      // Log the request to the logfile
     logWithTimestamp(`Request received with payload: ${JSON.stringify(req.body)}\n`);
 
-    if (signature !== digest) {
-        logWithTimestamp('Authentication failed');
-        return res.status(403).send('Authentication failed');
-    }
+    // if (signature !== digest) {
+    //     logWithTimestamp('Authentication failed');
+    //     return res.status(403).send('Authentication failed');
+    // }
 
     if (action === 'update-opmx') {
         scriptToRun = './scripts/update-opmx.sh';
