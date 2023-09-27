@@ -20,7 +20,7 @@ function logWithTimestamp(message) {
 }
 
 app.get("/test", (req, res) => {
-    res.send("Webhook server is running");
+    res.send("Webhook server is running...");
 })
 
 app.post('/webhook', (req, res) => {
