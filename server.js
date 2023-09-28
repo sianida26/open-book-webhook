@@ -56,7 +56,7 @@ app.post('/webhook', (req, res) => {
         return res.status(400).send('Invalid pull type');
     }
 
-    exec(scriptToRun, (error, stdout, stderr) => {
+    exec("sh " + scriptToRun, (error, stdout, stderr) => {
         if (error) {
             logWithTimestamp(`exec error: ${error}`);
             return res.status(500).send('Failed to execute script');
